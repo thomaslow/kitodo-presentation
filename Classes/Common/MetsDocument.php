@@ -1177,9 +1177,9 @@ final class MetsDocument extends AbstractDocument
             $physicalStructureNode = $this->physicalStructureInfo[$id];
             $fileLocations = [];
 
-            if (!empty($physicalStructureNode)) {
+            if (!empty($physicalStructureNode) && array_key_exists('files', $physicalStructureNode)) {
                 while ($useGroup = array_shift($useGroups)) {
-                    if (in_array($useGroup, $physicalStructureNode['files'])) {
+                    if (array_key_exists($useGroup, $physicalStructureNode['files'])) {
                         $fileLocations[$useGroup] = $this->getFileLocation($physicalStructureNode['files'][$useGroup]);
                     }
                 }
